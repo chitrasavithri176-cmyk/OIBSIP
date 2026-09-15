@@ -1,0 +1,40 @@
+Advertising Sales Prediction: A Comparative Analysis of Regression Models
+Overview
+This notebook provides a comprehensive analysis of the impact of various advertising channels (TV, Radio, Newspaper) on sales. The objective is to build predictive models that can accurately forecast sales based on advertising spend and to identify which advertising channels contribute most significantly to sales.
+
+Analysis Steps
+Setup and Data Loading:
+
+Imported essential libraries (pandas, numpy, matplotlib, seaborn, sklearn).
+Loaded the Advertising.csv dataset into a pandas DataFrame.
+Initial Data Inspection:
+
+Checked for missing values, confirming the dataset is complete.
+Reviewed descriptive statistics to understand the central tendency, dispersion, and shape of the data's distribution.
+Exploratory Data Analysis (EDA) and Visualization:
+
+Pairplot: Generated a pairplot to visualize relationships between all pairs of variables and individual variable distributions. This revealed initial insights into potential correlations.
+Individual Scatter Plots: Created scatter plots of Sales vs. TV, Sales vs. Radio, and Sales vs. Newspaper spend to observe direct relationships. TV and Radio showed a stronger positive correlation with Sales compared to Newspaper.
+Correlation Matrix Heatmap: Visualized the correlation matrix to quantify the linear relationships between variables. It confirmed strong positive correlations between TV/Radio and Sales, and a weaker positive correlation for Newspaper.
+Data Preprocessing: Train-Test Split:
+
+Separated features (X: 'TV', 'Radio', 'Newspaper') from the target variable (y: 'Sales').
+Split the dataset into training (80%) and testing (20%) sets to ensure robust model evaluation.
+Model Training:
+
+Linear Regression Model: Trained a standard Linear Regression model as a baseline. The coefficients indicated the linear impact of each advertising channel on sales.
+Polynomial Regression Model (Degree 2): Applied Polynomial Features (degree 2) to capture potential non-linear relationships, then trained a Linear Regression model on these transformed features.
+Model Evaluation:
+
+Evaluated both models using Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R2 Score on the test set.
+Results: The Polynomial Regression model significantly outperformed the Linear Regression model across all metrics (MAE: 0.526 vs 1.461, RMSE: 0.643 vs 1.782, R2 Score: 0.987 vs 0.899). This suggests that non-linear relationships are present and better captured by the polynomial model.
+Residual Analysis for the Best Model (Polynomial Regression):
+
+Created a residual plot for the Polynomial Regression model. The plot showed a random scatter of residuals around zero, indicating that the model's errors are largely random and it has successfully captured the underlying patterns without systematic biases.
+Interpretation: Which Advertising Channel Has the Highest Impact on Sales?
+
+Based on the Linear Regression model's coefficients (as they directly indicate linear impact):
+Radio (Coefficient ≈ 0.189): Demonstrated the highest positive impact on sales.
+TV (Coefficient ≈ 0.045): Showed a positive but lower impact than Radio.
+Newspaper (Coefficient ≈ 0.003): Had a very small, almost negligible, positive impact.
+Therefore, the analysis suggests that Radio advertising has the highest linear impact on sales.
