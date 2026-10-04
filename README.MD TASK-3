@@ -1,0 +1,67 @@
+Car Price Prediction: A Comparative Analysis of Regression Models
+Overview
+This notebook demonstrates a structured, end-to-end machine learning pipeline using the Car Dekho Dataset to predict used car selling prices. The objective is to build predictive models that accurately forecast used car prices based on features such as car age, mileage, fuel type, transmission type, and brand, and to identify the key factors that drive the resale value of cars.
+
+Analysis Steps
+1. Data Loading & Initial Inspection
+Loaded the CAR DETAILS FROM CAR DEKHO.csv dataset into a pandas DataFrame.
+Inspected the dataset structure, missing values, and data types. The dataset consists of 4,340 rows and 8 initial features (name, year, selling_price, km_driven, fuel, seller_type, transmission, owner).
+2. Data Cleaning & Standardization
+Checked for missing values across all columns.
+Identified and removed 763 duplicate records, resulting in a cleaned dataset of 3,577 unique entries.
+Standardized categorical variables (fuel, seller_type, transmission, owner) by trimming whitespaces and normalizing character casing to prevent inconsistencies.
+3. Feature Engineering
+car_age: Calculated dynamically based on the current year to capture the depreciation impact over time.
+brand: Extracted the manufacturer's brand name from the first word of the name column, yielding 29 unique car brands.
+4. Exploratory Data Analysis (EDA)
+Target Distribution: Analyzed the distribution of selling_price, revealing a right-skewed distribution.
+Categorical Visualizations: Used box plots to compare selling_price across different fuel types.
+Scatter Plots: Plotted selling_price against car_age to observe negative correlation trends.
+Correlation Analysis: Built correlation heatmaps for both the target variable and key numerical features, highlighting correlations between transmission, age, and price.
+5. Categorical Encoding & Dataset Preparation
+Ordinal Encoding: Mapped the owner variable to numerical values hierarchy (Test drive car: 0 to Fourth & above owner: 4).
+One-Hot Encoding: Applied dummy variable encoding to nominal features (fuel, seller_type, transmission, brand) while dropping the first category to avoid multi-collinearity.
+Dropped redundant columns (name, year, owner) to output a finalized modeling dataset of 3,577 rows and 39 columns.
+6. Data Preprocessing & Splitting
+Separated features ( X ) from the target variable ( y : selling_price).
+Split the dataset into training (80%) and testing (20%) sets using a fixed random state to ensure reproducibility.
+7. Model Training & Comparisons
+Two distinct regression algorithms were trained and evaluated on the test set:
+
+Linear Regression: Served as the baseline model.
+Random Forest Regressor: Ensembled decision trees to capture non-linear interactions.
+8. Model Evaluation
+Both models were compared using Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and the R-squared ( R2 ) Score:
+
+Linear Regression Baseline:
+
+MAE: 180,314.27 INR
+RMSE: 386,085.34 INR
+R2  Score: 0.5373
+Random Forest Regressor:
+
+MAE: 159,765.87 INR
+RMSE: 366,905.04 INR
+R2  Score: 0.5821
+Key Takeaway: The Random Forest Regressor outperformed the Linear Regression baseline across all metrics, explaining approximately 58.21% of the variance in used car selling prices.
+
+9. Feature Importance Analysis
+An analysis of the Random Forest model's feature importances revealed the top drivers of used car selling prices:
+
+transmission_Manual: The most influential feature, reflecting a substantial pricing premium for automatic transmissions.
+car_age: The second strongest predictor, showing that younger cars retain significantly higher market values.
+km_driven: Total distance driven acts as another primary depreciating metric.
+fuel_Diesel & brand factors (e.g., brand_Audi): Engine type and luxury brand status also heavily influence overall resale valuations.
+Colab paid products
+-
+Cancel contracts here
+
+Advertising Sales Prediction: A Comparative Analysis of Regression Models Overview This notebook provides a comprehensive analysis of the impact of various advertising channels (TV, Radio, Newspaper) on sales. The objective is to build predictive models that can accurately forecast sales based on advertising spend and to identify which advertising channels contribute most significantly to sales. Analysis Steps Setup and Data Loading: Imported essential libraries (pandas, numpy, matplotlib, seaborn, sklearn). Loaded the Advertising.csv dataset into a pandas DataFrame. Initial Data Inspection: Checked for missing values, confirming the dataset is complete. Reviewed descriptive statistics to understand the central tendency, dispersion, and shape of the data's distribution. Exploratory Data Analysis (EDA) and Visualization: Pairplot: Generated a pairplot to visualize relationships between all pairs of variables and individual variable distributions. This revealed initial insights into potential correlations. Individual Scatter Plots: Created scatter plots of Sales vs. TV, Sales vs. Radio, and Sales vs. Newspaper spend to observe direct relationships. TV and Radio showed a stronger positive correlation with Sales compared to Newspaper. Correlation Matrix Heatmap: Visualized the correlation matrix to quantify the linear relationships between variables. It confirmed strong positive correlations between TV/Radio and Sales, and a weaker positive correlation for Newspaper. Data Preprocessing: Train-Test Split: Separated features (X: 'TV', 'Radio', 'Newspaper') from the target variable (y: 'Sales'). Split the dataset into training (80%) and testing (20%) sets to ensure robust model evaluation. Model Training: Linear Regression Model: Trained a standard Linear Regression model as a baseline. The coefficients indicated the linear impact of each advertising channel on sales. Polynomial Regression Model (Degree 2): Applied Polynomial Features (degree 2) to capture potential non-linear relationships, then trained a Linear Regression model on these transformed features. Model Evaluation: Evaluated both models using Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R2 Score on the test set. Results: The Polynomial Regression model significantly outperformed the Linear Regression model across all metrics (MAE: 0.526 vs 1.461, RMSE: 0.643 vs 1.782, R2 Score: 0.987 vs 0.899). This suggests that non-linear relationships are present and better captured by the polynomial model. Residual Analysis for the Best Model (Polynomial Regression): Created a residual plot for the Polynomial Regression model. The plot showed a random scatter of residuals around zero, indicating that the model's errors are largely random and it has successfully captured the underlying patterns without systematic biases. Interpretation: Which Advertising Channel Has the Highest Impact on Sales? Based on the Linear Regression model's coefficients (as they directly indicate linear impact): Radio (Coefficient ≈ 0.189): Demonstrated the highest positive impact on sales. TV (Coefficient ≈ 0.045): Showed a positive but lower impact than Radio. Newspaper (Coefficient ≈ 0.003): Had a very small, almost negligible, positive impact. Therefore, the analysis suggests that Radio advertising has the highest linear impact on sales. GIVE ME LIKE THIS REDAME.MD FILE
+I have created a comprehensive, structured README.md content for your Car Price Prediction project, detailing every step from data cleaning to model comparison and feature importances.
+
+What can I help you build?
+
+ 
+Gemini 3.5 Flash
+85%
+Gemini can make mistakes, so double-check it and use code with caution. Learn more
